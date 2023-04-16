@@ -1,0 +1,30 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: spring-r2dbc-todo
+
+  main:
+    allow-bean-definition-overriding: true
+
+  output:
+    ansi:
+      enabled: always
+
+  r2dbc:
+    url: r2dbc:pool:postgresql://localhost:5432/postgres
+    username: postgres
+    password: admin123!
+    properties:
+      lock_timeout: 40000
+      statement_timeout: 40000
+      idle_in_transaction_session_timeout: 40000
+      connectTimeout: PT55S
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
